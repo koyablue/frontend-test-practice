@@ -35,4 +35,20 @@ describe(PokemonFinder, () => {
     expect(image).toHaveAttribute("src", "http://example.com/pikachu.png");
     expect(image).toHaveAttribute("alt", "pikachu");
   });
+
+  test("Error message will be displayed if API request is failed", async () => {
+    render(<PokemonFinder />);
+
+    const user = userEvent.setup();
+    const inputElement = screen.getByPlaceholderText("ポケモンのIDを入力");
+    await user.type(inputElement, "999999");
+
+    const buttonElement = screen.getByRole("button", {
+      name: "ポケモンを見つける",
+    });
+    await user.click(buttonElement);
+
+    const pokemonName = screen.getByText("ポケモンのデータが見つかりません。");
+    expect(pokemonName).toBeInTheDocument();
+  });
 });

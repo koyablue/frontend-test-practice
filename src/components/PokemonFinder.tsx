@@ -23,7 +23,7 @@ const PokemonFinder = () => {
 
   return (
     <div className="App">
-      <h1>ポケモンファインダー</h1>
+      <h1 data-testid="poke-finder-title">ポケモンファインダー</h1>
       <input
         type="number"
         value={pokemonId}
