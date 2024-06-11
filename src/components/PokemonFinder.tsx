@@ -25,12 +25,15 @@ const PokemonFinder = () => {
     <div className="App">
       <h1 data-testid="poke-finder-title">ポケモンファインダー</h1>
       <input
+        name="pokemonId"
         type="number"
         value={pokemonId}
         onChange={(e) => setPokemonId(e.target.value)}
         placeholder="ポケモンのIDを入力"
       />
-      <button onClick={fetchPokemonById}>ポケモンを見つける</button>
+      <button data-testid="poke-finder-submit" onClick={fetchPokemonById}>
+        ポケモンを見つける
+      </button>
       {error && <div>{error}</div>}
       {pokemon && (
         <div>
